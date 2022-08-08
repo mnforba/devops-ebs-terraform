@@ -40,5 +40,14 @@ node
         sh 'npm run build'
 	}
  }
-    
+ stage("TFInit&Plan")
+ {
+ sh 'terraform init'
+ sh 'terraform validate'
+ sh 'terraform plan --auto-approve'
+ } 
+ stage("TF Apply")
+ {
+        sh 'terraform apply --auto-approve'
+ } 
 }
